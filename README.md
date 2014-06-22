@@ -1,4 +1,4 @@
-API_client_csharp
+API Client CSharp
 =================
 
-GatecoinServiceInterface for accessing the Http API, in C#
+GatecoinServiceInterface is a toolkit for accessing the Http API, in C#
