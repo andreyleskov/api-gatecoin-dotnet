@@ -6,10 +6,10 @@ using ServiceStack.ServiceHost;
 using ServiceStack.Common.Web;
 using GatecoinServiceInterface.Response;
 namespace GatecoinServiceInterface.Request{
-[Route("/ElectronicWallet/Withdrawal/{DigiCurrency}", "POST", Summary = @"Request a transfer from the traders account to an external address. This is only available for crypto currencies.", Notes = @"")]
-public class ElectronicWalletWithdraw : IReturn<CommonResponse>
+[Route("/ElectronicWallet/Withdrawals/{DigiCurrency}", "POST", Summary = @"Request a transfer from the traders account to an external address. This is only available for crypto currencies.", Notes = @"")]
+public class NewElectronicWalletWithdrawals : IReturn<CommonResponse>
 {
-[ApiMember(Name = "DigiCurrency", Description = "The digital currency to withdraw", ParameterType = "path", DataType = "string", IsRequired = false)]
+[ApiMember(Name = "DigiCurrency", Description = "The digital currency to withdraw", ParameterType = "path", DataType = "string", IsRequired = true)]
 public System.String DigiCurrency {get; set; } 
 [ApiMember(Name = "AddressName", Description = "External address name", ParameterType = "query", DataType = "string", IsRequired = true)]
 public System.String AddressName {get; set; } 

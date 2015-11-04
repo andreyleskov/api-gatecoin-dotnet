@@ -21,55 +21,82 @@ namespace GatecoinServiceInterface.Client
 
         public ServiceClient(string url)
         {
+            ServicePointManager.ServerCertificateValidationCallback += (o, c, ch, er) => true;
             client = new JsonServiceClient(url);
-
+            ServiceStack.Text.JsConfig<DateTime>.RawDeserializeFn = (arg) => { return UnixTimeStampToDateTime(arg); };
+            ServiceStack.Text.JsConfig<DateTime?>.RawDeserializeFn = (arg) => { return arg == null ? null : (DateTime?)UnixTimeStampToDateTime(arg); };
             requestFilter = new Action<HttpWebRequest>((request) =>
             {
                 if (!String.IsNullOrWhiteSpace(publicKey) && !String.IsNullOrWhiteSpace(privateKey))
                 {
-                    if (request.RequestUri.AbsolutePath.Contains("Upload"))
-                    {
-                        request.ContentType = ServiceStack.Common.Web.ContentType.MultiPartFormData;
-                    }
-                    else
-                    {
-                        request.ContentType = ServiceStack.Common.Web.ContentType.Json;
-                    }
-                    request.Date = DateTime.Now;
+                    request.Headers.Clear();
+                    request.ContentType = ServiceStack.Common.Web.ContentType.Json;
+                    string unixTimestamp = ToUnixTimeStamp(DateTime.Now).ToString();
 
                     var secret = privateKey;
-                    var token = ServiceSignature.CreateToken(request, secret);
+                    var token = ServiceSignature.CreateToken(request, secret, unixTimestamp);
                     request.Headers.Add(ServiceSignature.API_PUBLIC_KEY, publicKey);
                     request.Headers.Add(ServiceSignature.API_REQUEST_SIGNATURE, token);
-                    request.Headers.Add(ServiceSignature.API_REQUEST_DATE, request.Date.ToUniversalTime().ToString("r"));
+                    request.Headers.Add(ServiceSignature.API_REQUEST_DATE, unixTimestamp);
                 }
             });
+        }
+
+        private static DateTime UnixTimeStampToDateTime(string arg)
+        {
+            try
+            {
+                double unixTimeStamp = Convert.ToDouble(arg);
+                // Unix timestamp is seconds past epoch
+                System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
+                dtDateTime = dtDateTime.AddSeconds(unixTimeStamp).ToLocalTime();
+                return dtDateTime;
+            }
+            catch
+            {
+                return new DateTime();
+            }
+        }
+
+        private static double ToUnixTimeStamp(DateTime date)
+        {
+            return (date - new DateTime(1970, 1, 1).ToLocalTime()).TotalSeconds;
         }
 
         private Action<HttpWebRequest> requestFilter;
 
         public bool Login(string userName, string password, string validationCode)
         {
-            var response = client.Post(new Login() { UserName = userName, Password = password, ValidationCode = validationCode });
-            if (response.IsSuccess)
+            try
             {
-                loginSession = response;
-                publicKey = response.PublicKey;
-                privateKey = response.ApiKey;
-                client.LocalHttpWebRequestFilter += requestFilter;
-                if (OnLoginSuccess != null)
+                var response = client.Post(new Login() { UserName = userName, Password = password, ValidationCode = validationCode });
+                if (response.IsSuccess)
                 {
-                    OnLoginSuccess(this, EventArgs.Empty);
+                    loginSession = response;
+                    publicKey = response.PublicKey;
+                    privateKey = response.ApiKey;
+                    if (client.LocalHttpWebRequestFilter == null)
+                    {
+                        client.LocalHttpWebRequestFilter += requestFilter;
+                    }
+                    if (OnLoginSuccess != null)
+                    {
+                        OnLoginSuccess(this, EventArgs.Empty);
+                    }
                 }
+                else
+                {
+                    if (OnLoginFailed != null)
+                    {
+                        OnLoginFailed(this, new ErrorEventArgs(new Exception(response.ResponseStatus.Message)));
+                    }
+                }
+                return response.IsSuccess;
             }
-            else
+            catch (Exception ex)
             {
-                if (OnLoginFailed != null)
-                {
-                    OnLoginFailed(this, new ErrorEventArgs(new Exception(response.ResponseStatus.Message)));
-                }
+                throw;
             }
-            return response.IsSuccess;
         }
 
         public void Logout()
@@ -93,7 +120,10 @@ namespace GatecoinServiceInterface.Client
         {
             this.publicKey = publicKey;
             this.privateKey = privateKey;
-            client.LocalHttpWebRequestFilter += requestFilter;
+            if (client.LocalHttpWebRequestFilter == null)
+            {
+                client.LocalHttpWebRequestFilter += requestFilter;
+            }
         }
 
         public void ClearApiKey()
@@ -159,6 +189,33 @@ namespace GatecoinServiceInterface.Client
         public void PostAsync<TResponse>(string relativeOrAbsoluteUrl, object request, Action<TResponse> onSuccess, Action<TResponse, Exception> onError)
         {
             client.PostAsync<TResponse>(relativeOrAbsoluteUrl, request, onSuccess, onError);
+        }
+        #endregion
+
+        #region Delete
+        public TResponse Delete<TResponse>(IReturn<TResponse> request)
+        {
+            return client.Delete<TResponse>(request);
+        }
+
+        public void Delete(IReturnVoid request)
+        {
+            client.Delete(request);
+        }
+
+        public TResponse Delete<TResponse>(string relativeOrAbsoluteUrl)
+        {
+            return client.Delete<TResponse>(relativeOrAbsoluteUrl);
+        }
+
+        public void DeleteAsync<TResponse>(IReturn<TResponse> request, Action<TResponse> onSuccess, Action<TResponse, Exception> onError)
+        {
+            client.DeleteAsync<TResponse>(request, onSuccess, onError);
+        }
+
+        public void DeleteAsync<TResponse>(string relativeOrAbsoluteUrl, Action<TResponse> onSuccess, Action<TResponse, Exception> onError)
+        {
+            client.DeleteAsync<TResponse>(relativeOrAbsoluteUrl, onSuccess, onError);
         }
         #endregion
 

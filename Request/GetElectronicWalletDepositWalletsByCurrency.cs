@@ -6,13 +6,11 @@ using ServiceStack.ServiceHost;
 using ServiceStack.Common.Web;
 using GatecoinServiceInterface.Response;
 namespace GatecoinServiceInterface.Request{
-[Route("/ElectronicWallet/External/Delete/{DigiCurrency}", "POST", Summary = @"Delete an external digital currency addresses related to the logged in user. ", Notes = @"")]
-public class DeleteExternalElectronicAddress : IReturn<CommonResponse>
+[Route("/ElectronicWallet/DepositWallets/{DigiCurrency}", "GET", Summary = @"Gets all crypto currency addresses related deposits to the logged in user by currency. ", Notes = @"")]
+public class GetElectronicWalletDepositWalletsByCurrency : IReturn<InternalElectronicAddressesResponse>
 {
 [ApiMember(Name = "DigiCurrency", Description = "Crypto-currency for the address (btc,ltc etc)", ParameterType = "path", DataType = "string", IsRequired = false)]
 public System.String DigiCurrency {get; set; } 
-[ApiMember(Name = "AddressName", Description = "External address name", ParameterType = "query", DataType = "string", IsRequired = true)]
-public System.String AddressName {get; set; } 
 }
 }
 

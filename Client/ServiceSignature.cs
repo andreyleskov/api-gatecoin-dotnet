@@ -20,12 +20,12 @@ namespace GatecoinServiceInterface.Client
         /// <param name="webRequest"></param>
         /// <param name="secret"></param>
         /// <returns></returns>
-        public static string CreateToken(HttpWebRequest webRequest, string secret)
+        public static string CreateToken(HttpWebRequest webRequest, string secret, string unixTimestamp)
         {
             return CreateToken(FlattenRequestDetails(webRequest.Method,
                                                      webRequest.RequestUri.AbsoluteUri,
                                                      webRequest.ContentType,
-                                                     webRequest.Date.ToUniversalTime().ToString("r")
+                                                     unixTimestamp
                                    ), secret);
         }
 

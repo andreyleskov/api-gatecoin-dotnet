@@ -6,8 +6,8 @@ using ServiceStack.ServiceHost;
 using ServiceStack.Common.Web;
 using GatecoinServiceInterface.Response;
 namespace GatecoinServiceInterface.Request{
-[Route("/ElectronicWallet/External/Get", "GET", Summary = @"Gets all external digital currency addresses related to the logged in user. ", Notes = @"")]
-public class GetExternalElectronicAddresses : IReturn<ElectronicAddressesResponse>
+[Route("/ElectronicWallet/UserWallets", "GET", Summary = @"Gets all external digital currency addresses related to the logged in user. ", Notes = @"")]
+public class GetElectronicWalletUserWallets : IReturn<ElectronicAddressesResponse>
 {
 }
 }
