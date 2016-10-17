@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{09161B2C-37D0-402D-A34C-FCA2B1F132AF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>GatecoinServiceInterface</RootNamespace>
+    <AssemblyName>api-gatecoin-dotnet</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\api-gatecoin-dotnet.xml</DocumentationFile>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\api-gatecoin-dotnet.xml</DocumentationFile>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Compile Include="Client\ServiceClient.cs" />
+    <Compile Include="Client\ServiceSignature.cs" />
+    <Compile Include="Model\APIKey.cs" />
+    <Compile Include="Model\AccountBalance.cs" />
+    <Compile Include="Model\BankAccount.cs" />
+    <Compile Include="Model\BankTransfer.cs" />
+    <Compile Include="Model\Country.cs" />
+    <Compile Include="Model\Currency.cs" />
+    <Compile Include="Model\CurrencyPair.cs" />
+    <Compile Include="Model\DigitalCurrencyTransfer.cs" />
+    <Compile Include="Model\Limit.cs" />
+    <Compile Include="Model\LiveTicker.cs" />
+    <Compile Include="Model\MarketData.cs" />
+    <Compile Include="Model\OpenOrder.cs" />
+    <Compile Include="Model\QuickOrderQuote.cs" />
+    <Compile Include="Model\ReferenceItem.cs" />
+    <Compile Include="Model\StatsHistoData.cs" />
+    <Compile Include="Model\TotalWithdrawn.cs" />
+    <Compile Include="Model\TraderElectronicWallet.cs" />
+    <Compile Include="Model\TraderTransaction.cs" />
+    <Compile Include="Model\Transaction.cs" />
+    <Compile Include="Model\UserQuickOrder.cs" />
+    <Compile Include="Model\WithdrawalLimit.cs" />
+    <Compile Include="Request\AddBankAccount.cs" />
+    <Compile Include="Request\AddBankAccountWithdraw.cs" />
+    <Compile Include="Request\AddOrder.cs" />
+    <Compile Include="Request\CancelOrder.cs" />
+    <Compile Include="Request\CancelOrders.cs" />
+    <Compile Include="Request\CreateAPIKey.cs" />
+    <Compile Include="Request\DeleteAPIKey.cs" />
+    <Compile Include="Request\DeleteElectronicWalletDepositWallets.cs" />
+    <Compile Include="Request\DeleteElectronicWalletUserWallets.cs" />
+    <Compile Include="Request\DeletePendingBankAccountWithdraw.cs" />
+    <Compile Include="Request\GetAPIKey.cs" />
+    <Compile Include="Request\GetBalance.cs" />
+    <Compile Include="Request\GetBalances.cs" />
+    <Compile Include="Request\GetBankAccountTransactions.cs" />
+    <Compile Include="Request\GetBankAccounts.cs" />
+    <Compile Include="Request\GetBankAccountsByCurrency.cs" />
+    <Compile Include="Request\GetCurrencies.cs" />
+    <Compile Include="Request\GetCurrencyPairs.cs" />
+    <Compile Include="Request\GetElectronicWalletTransactions.cs" />
+    <Compile Include="Request\GetElectronicWalletTransactionsByCurrency.cs" />
+    <Compile Include="Request\GetElectronicWalletUserWallets.cs" />
+    <Compile Include="Request\GetElectronicWalletUserWalletsByCurrency.cs" />
+    <Compile Include="Request\GetFeeRate.cs" />
+    <Compile Include="Request\GetInternalBankAccount.cs" />
+    <Compile Include="Request\GetNetworkStats.cs" />
+    <Compile Include="Request\GetOrder.cs" />
+    <Compile Include="Request\GetOrders.cs" />
+    <Compile Include="Request\GetPublicChannel.cs" />
+    <Compile Include="Request\GetStatsHisto.cs" />
+    <Compile Include="Request\GetTicker.cs" />
+    <Compile Include="Request\GetTicker24h.cs" />
+    <Compile Include="Request\GetTickerHisto.cs" />
+    <Compile Include="Request\Login.cs" />
+    <Compile Include="Request\Logout.cs" />
+    <Compile Include="Request\MarketDepthForMarket.cs" />
+    <Compile Include="Request\NewElectronicWalletUserWallets.cs" />
+    <Compile Include="Request\NewElectronicWalletWithdrawals.cs" />
+    <Compile Include="Request\PingPost.cs" />
+    <Compile Include="Request\QuickOrder.cs" />
+    <Compile Include="Request\RequestForQuote.cs" />
+    <Compile Include="Request\Transactions.cs" />
+    <Compile Include="Request\UpdateElectronicAddress.cs" />
+    <Compile Include="Request\UpdateExternalElectronicAddress.cs" />
+    <Compile Include="Request\UserQuickOrders.cs" />
+    <Compile Include="Request\UserTransactions.cs" />
+    <Compile Include="Response\AddOrderResponse.cs" />
+    <Compile Include="Response\AvailableBalanceResponse.cs" />
+    <Compile Include="Response\AvailableBalancesResponse.cs" />
+    <Compile Include="Response\BalanceResponse.cs" />
+    <Compile Include="Response\BalancesResponse.cs" />
+    <Compile Include="Response\BankAccountResponse.cs" />
+    <Compile Include="Response\BankAccountTransfersResponse.cs" />
+    <Compile Include="Response\BankAccountsResponse.cs" />
+    <Compile Include="Response\CommonResponse.cs" />
+    <Compile Include="Response\ElectronicAddressesResponse.cs" />
+    <Compile Include="Response\ElectronicWalletTransactionsResponse.cs" />
+    <Compile Include="Response\FeeRateResponse.cs" />
+    <Compile Include="Response\GetAPIKeyResponse.cs" />
+    <Compile Include="Response\GetCountriesResponse.cs" />
+    <Compile Include="Response\GetCurrenciesResponse.cs" />
+    <Compile Include="Response\GetCurrencyPairResponse.cs" />
+    <Compile Include="Response\GetNetworkStatsResponse.cs" />
+    <Compile Include="Response\GetStatsHistoResponse.cs" />
+    <Compile Include="Response\HistoTickersResponse.cs" />
+    <Compile Include="Response\LoginResponse.cs" />
+    <Compile Include="Response\MarketDepthResponse.cs" />
+    <Compile Include="Response\OrderResponse.cs" />
+    <Compile Include="Response\OrdersResponse.cs" />
+    <Compile Include="Response\PingResponse.cs" />
+    <Compile Include="Response\PublicChannelResponse.cs" />
+    <Compile Include="Response\RequestForQuoteResponse.cs" />
+    <Compile Include="Response\TickerResponse.cs" />
+    <Compile Include="Response\TickersResponse.cs" />
+    <Compile Include="Response\TransactionsResponse.cs" />
+    <Compile Include="Response\UserQuickOrdersResponse.cs" />
+    <Compile Include="Response\UserTransactionsResponse.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="ServiceStack.Common">
+      <HintPath>packages\ServiceStack.Common.3.9.33\lib\net35\ServiceStack.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces">
+      <HintPath>packages\ServiceStack.Common.3.9.33\lib\net35\ServiceStack.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text">
+      <HintPath>packages\ServiceStack.Text.3.9.33\lib\net35\ServiceStack.Text.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>
