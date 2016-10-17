@@ -6,7 +6,7 @@ using ServiceStack.ServiceHost;
 using ServiceStack.Common.Web;
 using GatecoinServiceInterface.Response;
 namespace GatecoinServiceInterface.Request{
-[Route("/Login", "POST", Summary = @"Trader session log in.", Notes = @"")]
+[Route("/Auth/Login", "POST", Summary = @"Trader session log in.", Notes = @"")]
 public class Login : IReturn<LoginResponse>
 {
 [ApiMember(Name = "UserName", Description = "user name", ParameterType = "query", DataType = "string", IsRequired = true)]
