@@ -14,6 +14,7 @@ namespace GatecoinServiceInterface.Client
 {
     public class ServiceClient
     {
+        static readonly DateTime UnixEpoch = new DateTime(1970, 1, 1, 0, 0, 0);
         private JsonServiceClient client;
         private LoginResponse loginSession;
         private string publicKey;
@@ -60,7 +61,7 @@ namespace GatecoinServiceInterface.Client
 
         private static double ToUnixTimeStamp(DateTime date)
         {
-            return (date - new DateTime(1970, 1, 1).ToLocalTime()).TotalSeconds;
+            return (date.ToUniversalTime() - UnixEpoch).TotalSeconds;
         }
 
         private Action<HttpWebRequest> requestFilter;
