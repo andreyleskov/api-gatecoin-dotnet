@@ -20,6 +20,10 @@ namespace GatecoinServiceInterface.Client
         private string publicKey;
         private string privateKey;
 
+        public ServiceClient() : this("https://api.gatecoin.com/")
+        {
+        }
+
         public ServiceClient(string url)
         {
             ServicePointManager.ServerCertificateValidationCallback += (o, c, ch, er) => true;
