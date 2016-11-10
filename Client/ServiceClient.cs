@@ -14,7 +14,7 @@ namespace GatecoinServiceInterface.Client
 {
     public class ServiceClient
     {
-        static readonly DateTime UnixEpoch = new DateTime(1970, 1, 1, 0, 0, 0);
+        static readonly DateTime UnixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
         private JsonServiceClient client;
         private LoginResponse loginSession;
         private string publicKey;
@@ -49,18 +49,9 @@ namespace GatecoinServiceInterface.Client
 
         private static DateTime UnixTimeStampToDateTime(string arg)
         {
-            try
-            {
-                double unixTimeStamp = Convert.ToDouble(arg);
-                // Unix timestamp is seconds past epoch
-                System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
-                dtDateTime = dtDateTime.AddSeconds(unixTimeStamp).ToLocalTime();
-                return dtDateTime;
-            }
-            catch
-            {
-                return new DateTime();
-            }
+            double unixTimeStamp = Convert.ToDouble(arg);
+            // Unix timestamp is seconds past epoch in UTC
+            return UnixEpoch.AddSeconds(unixTimeStamp).ToLocalTime();
         }
 
         private static double ToUnixTimeStamp(DateTime date)
