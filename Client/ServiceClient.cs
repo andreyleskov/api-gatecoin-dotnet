@@ -40,15 +40,14 @@ namespace GatecoinServiceInterface.Client
             {
                 if (HasAuthenticationKeys)
                 {
-                    request.Headers.Clear();
                     request.ContentType = ServiceStack.Common.Web.ContentType.Json;
                     string unixTimestamp = ToUnixTimeStamp(DateTime.Now).ToString();
 
                     var secret = privateKey;
                     var token = ServiceSignature.CreateToken(request, secret, unixTimestamp);
-                    request.Headers.Add(ServiceSignature.API_PUBLIC_KEY, publicKey);
-                    request.Headers.Add(ServiceSignature.API_REQUEST_SIGNATURE, token);
-                    request.Headers.Add(ServiceSignature.API_REQUEST_DATE, unixTimestamp);
+                    request.Headers[ServiceSignature.API_PUBLIC_KEY] = publicKey;
+                    request.Headers[ServiceSignature.API_REQUEST_SIGNATURE] = token;
+                    request.Headers[ServiceSignature.API_REQUEST_DATE] = unixTimestamp;
                 }
             });
         }
