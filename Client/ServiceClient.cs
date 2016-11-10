@@ -20,6 +20,12 @@ namespace GatecoinServiceInterface.Client
         private string publicKey;
         private string privateKey;
 
+        protected bool HasAuthenticationKeys {
+            get {
+                return !String.IsNullOrWhiteSpace(publicKey) && !String.IsNullOrWhiteSpace(privateKey);
+            }
+        }
+
         public ServiceClient() : this("https://api.gatecoin.com/")
         {
         }
@@ -32,7 +38,7 @@ namespace GatecoinServiceInterface.Client
             ServiceStack.Text.JsConfig<DateTime?>.RawDeserializeFn = (arg) => { return arg == null ? null : (DateTime?)UnixTimeStampToDateTime(arg); };
             requestFilter = new Action<HttpWebRequest>((request) =>
             {
-                if (!String.IsNullOrWhiteSpace(publicKey) && !String.IsNullOrWhiteSpace(privateKey))
+                if (HasAuthenticationKeys)
                 {
                     request.Headers.Clear();
                     request.ContentType = ServiceStack.Common.Web.ContentType.Json;
@@ -97,6 +103,14 @@ namespace GatecoinServiceInterface.Client
 
         public void Logout()
         {
+            if (HasAuthenticationKeys) {
+                var res = client.Post(new GatecoinServiceInterface.Request.Logout());
+                if (res.ResponseStatus.ErrorCode != null ||
+                    res.ResponseStatus.Message != "OK") {
+                    throw new WebServiceException("/Auth/Logout has failed!");
+                }
+            }
+
             loginSession = null;
             publicKey = null;
             privateKey = null;
