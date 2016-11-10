@@ -32,7 +32,6 @@ namespace GatecoinServiceInterface.Client
 
         public ServiceClient(string url)
         {
-            ServicePointManager.ServerCertificateValidationCallback += (o, c, ch, er) => true;
             client = new JsonServiceClient(url);
             ServiceStack.Text.JsConfig<DateTime>.RawDeserializeFn = (arg) => { return UnixTimeStampToDateTime(arg); };
             ServiceStack.Text.JsConfig<DateTime?>.RawDeserializeFn = (arg) => { return arg == null ? null : (DateTime?)UnixTimeStampToDateTime(arg); };
