@@ -26,6 +26,12 @@ namespace GatecoinServiceInterface.Client
             }
         }
 
+        protected JsonServiceClient Client {
+            get {
+                return client;
+            }
+        }
+
         public ServiceClient() : this("https://api.gatecoin.com/")
         {
         }
