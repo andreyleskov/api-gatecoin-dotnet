@@ -14,6 +14,7 @@ public System.String CurrencyTo {get; set; }
 public System.Decimal Amount {get; set; } 
 public System.Decimal Price {get; set; } 
 public System.String QuoteID {get; set; } 
+public Boolean IsAmountInCurrencyFrom {get; set; } 
 public System.DateTime ValidUntil {get; set; } 
 }
 }

@@ -8,7 +8,7 @@ using GatecoinServiceInterface.Model;
 namespace GatecoinServiceInterface.Response{
 public class FeeRateResponse : CommonResponse
 {
-public System.Decimal FeeRate {get; set; } 
+public List<FeeRate> FeeRates {get; set; } 
 }
 }
 

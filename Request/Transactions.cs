@@ -6,7 +6,7 @@ using ServiceStack.ServiceHost;
 using ServiceStack.Common.Web;
 using GatecoinServiceInterface.Response;
 namespace GatecoinServiceInterface.Request{
-[Route("/Public/Transactions/{CurrencyPair}", "GET", Summary = @"Gets all transactions", Notes = @"")]
+[Route("/Public/Transactions/{CurrencyPair}", "GET", Summary = @"Gets recent transactions", Notes = @"")]
 public class Transactions : IReturn<TransactionsResponse>
 {
 [ApiMember(Name = "CurrencyPair", Description = "Currency Pair", ParameterType = "path", DataType = "string", IsRequired = false)]

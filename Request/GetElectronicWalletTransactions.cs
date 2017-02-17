@@ -6,11 +6,9 @@ using ServiceStack.ServiceHost;
 using ServiceStack.Common.Web;
 using GatecoinServiceInterface.Response;
 namespace GatecoinServiceInterface.Request{
-[Route("/ElectronicWallet/Transactions/{DigiCurrency}", "GET", Summary = @"Get all digital currency transactions of the logged in user", Notes = @"")]
+[Route("/ElectronicWallet/Transactions", "GET", Summary = @"Get all digital currency transactions of the logged in user", Notes = @"")]
 public class GetElectronicWalletTransactions : IReturn<ElectronicWalletTransactionsResponse>
 {
-[ApiMember(Name = "DigiCurrency", Description = "The digital currency to check", ParameterType = "path", DataType = "string", IsRequired = false)]
-public System.String DigiCurrency {get; set; } 
 }
 }
 

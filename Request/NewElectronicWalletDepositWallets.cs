@@ -15,6 +15,8 @@ public System.String DigiCurrency {get; set; }
 public System.String AddressName {get; set; } 
 [ApiMember(Name = "AutoReceiveCurrency", Description = "Auto convert to national currency on deposit", ParameterType = "query", DataType = "string", IsRequired = false)]
 public System.String AutoReceiveCurrency {get; set; } 
+[ApiMember(Name = "WalletType", Description = "address or hex (for Ethereum)", ParameterType = "query", DataType = "string", IsRequired = false)]
+public System.String WalletType {get; set; } 
 }
 }
 

@@ -6,7 +6,7 @@ using ServiceStack.ServiceHost;
 using ServiceStack.Common.Web;
 using GatecoinServiceInterface.Response;
 namespace GatecoinServiceInterface.Request{
-[Route("/Bank/BankAccountTransactions", "GET", Summary = @"Get all account transactions of the logged in user", Notes = @"")]
+[Route("/Bank/Transactions", "GET", Summary = @"Get all account transactions of the logged in user", Notes = @"")]
 public class GetBankAccountTransactions : IReturn<BankAccountTransfersResponse>
 {
 }

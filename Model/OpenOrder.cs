@@ -16,8 +16,10 @@ public System.Decimal Price {get; set; }
 public System.Decimal InitialQuantity {get; set; } 
 public System.Decimal RemainingQuantity {get; set; } 
 public Byte Status {get; set; } 
+public System.String StatusDesc {get; set; } 
 public Int64 TranSeqNo {get; set; } 
 public Byte Type {get; set; } 
+public System.DateTime Date {get; set; } 
 }
 }
 

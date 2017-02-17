@@ -17,6 +17,7 @@ public System.String DefaultLanguage {get; set; }
 public Int32 VerifLevel {get; set; } 
 public Boolean UserHasUnreadTickets {get; set; } 
 public System.DateTime LastLogonTime {get; set; } 
+public Boolean IsPendingUnlockSecret {get; set; } 
 }
 }
 

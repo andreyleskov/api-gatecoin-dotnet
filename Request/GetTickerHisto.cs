@@ -6,7 +6,7 @@ using ServiceStack.ServiceHost;
 using ServiceStack.Common.Web;
 using GatecoinServiceInterface.Response;
 namespace GatecoinServiceInterface.Request{
-[Route("/Public/TickerHisto/{CurrencyPair}/{Timeframe}", "GET", Summary = @"Get historial ticker", Notes = @"Max return 100 record")]
+[Route("/Public/TickerHistory/{CurrencyPair}/{Timeframe}", "GET", Summary = @"Get ticker history", Notes = @"Max return 100 record")]
 public class GetTickerHisto : IReturn<HistoTickersResponse>
 {
 [ApiMember(Name = "CurrencyPair", Description = "Currency Pair", ParameterType = "path", DataType = "string", IsRequired = false)]

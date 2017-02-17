@@ -15,8 +15,10 @@ public System.String DigiCurrency {get; set; }
 public System.String AddressName {get; set; } 
 [ApiMember(Name = "Amount", Description = "Amount to withdraw", ParameterType = "query", DataType = "decimal", IsRequired = true)]
 public System.Decimal Amount {get; set; } 
-[ApiMember(Name = "TransactionFee", Description = "Transaction fee pay to miner. More transaction fee will result in faster transaction. Default 0. Max 0.01", ParameterType = "query", DataType = "decimal", IsRequired = false)]
-public System.Decimal TransactionFee {get; set; } 
+[ApiMember(Name = "Comment", Description = "comment", ParameterType = "query", DataType = "string", IsRequired = false)]
+public System.String Comment {get; set; } 
+[ApiMember(Name = "ExtraInfo", Description = "", ParameterType = "query", DataType = "string", IsRequired = false)]
+public System.String ExtraInfo {get; set; } 
 [ApiMember(Name = "ValidationCode", Description = "Validation code", ParameterType = "query", DataType = "string", IsRequired = false)]
 public System.String ValidationCode {get; set; } 
 }

@@ -6,7 +6,7 @@ using ServiceStack.ServiceHost;
 using ServiceStack.Common.Web;
 using GatecoinServiceInterface.Response;
 namespace GatecoinServiceInterface.Request{
-[Route("/APIKey/GetAPIKey", "GET", Summary = @"Get API Key for logged in user", Notes = @"")]
+[Route("/APIKey/APIKey", "GET", Summary = @"Get API Key for logged in user", Notes = @"")]
 public class GetAPIKey : IReturn<GetAPIKeyResponse>
 {
 }

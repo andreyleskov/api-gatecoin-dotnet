@@ -15,6 +15,7 @@ public System.Decimal Last {get; set; }
 public System.Decimal LastQ {get; set; } 
 public System.Decimal High {get; set; } 
 public System.Decimal Low {get; set; } 
+public System.Decimal Volume {get; set; } 
 public System.Decimal Volumn {get; set; } 
 public System.Decimal Bid {get; set; } 
 public System.Decimal BidQ {get; set; } 

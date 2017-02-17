@@ -6,11 +6,11 @@ using ServiceStack.ServiceHost;
 using ServiceStack.Common.Web;
 using GatecoinServiceInterface.Response;
 namespace GatecoinServiceInterface.Request{
-[Route("/Orders/CancelOrder", "POST", Summary = @"Cancels an existing order", Notes = @"")]
+[Route("/Trade/Orders/{OrderID}", "DELETE", Summary = @"Cancels an existing order", Notes = @"")]
 public class CancelOrder : IReturn<CommonResponse>
 {
-[ApiMember(Name = "clOrderId", Description = "Client order Id. Use as order Id", ParameterType = "query", DataType = "string", IsRequired = true)]
-public System.String clOrderId {get; set; } 
+[ApiMember(Name = "OrderID", Description = "Client order Id. Use as order Id", ParameterType = "path", DataType = "string", IsRequired = true)]
+public System.String OrderID {get; set; } 
 }
 }
 

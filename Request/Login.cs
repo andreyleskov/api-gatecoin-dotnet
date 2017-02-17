@@ -9,7 +9,7 @@ namespace GatecoinServiceInterface.Request{
 [Route("/Auth/Login", "POST", Summary = @"Trader session log in.", Notes = @"")]
 public class Login : IReturn<LoginResponse>
 {
-[ApiMember(Name = "UserName", Description = "user name", ParameterType = "query", DataType = "string", IsRequired = true)]
+[ApiMember(Name = "UserName", Description = "user name / email", ParameterType = "query", DataType = "string", IsRequired = true)]
 public System.String UserName {get; set; } 
 [ApiMember(Name = "Password", Description = "password", ParameterType = "query", DataType = "string", IsRequired = true)]
 public System.String Password {get; set; } 

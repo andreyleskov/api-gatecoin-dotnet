@@ -1,4 +1,4 @@
-using ServiceStack.ServiceInterface.ServiceModel;
+﻿using ServiceStack.ServiceInterface.ServiceModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ namespace GatecoinServiceInterface.Model{
 [Serializable]
 public class StatsHistoData 
 {
-public Int64 Time {get; set; } 
+public System.Int64 Time {get; set; } 
 public System.Decimal Value {get; set; } 
 }
 }

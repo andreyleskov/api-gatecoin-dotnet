@@ -1,4 +1,4 @@
-using ServiceStack.ServiceInterface.ServiceModel;
+﻿using ServiceStack.ServiceInterface.ServiceModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,4 +13,3 @@ public Int32 ID {get; set; }
 public System.String Description {get; set; } 
 }
 }
-

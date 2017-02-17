@@ -6,11 +6,11 @@ using ServiceStack.ServiceHost;
 using ServiceStack.Common.Web;
 using GatecoinServiceInterface.Response;
 namespace GatecoinServiceInterface.Request{
-[Route("/Orders", "POST", Summary = @"Gets an order for the logged in trader.", Notes = @"")]
+[Route("/Trade/Orders/{OrderID}", "GET", Summary = @"Gets an order for the logged in trader.", Notes = @"")]
 public class GetOrder : IReturn<OrderResponse>
 {
-[ApiMember(Name = "clOrderId", Description = "Client order Id. Use as order Id", ParameterType = "query", DataType = "string", IsRequired = true)]
-public System.String clOrderId {get; set; } 
+[ApiMember(Name = "OrderID", Description = "Order ID", ParameterType = "path", DataType = "string", IsRequired = true)]
+public System.String OrderId {get; set; } 
 }
 }
 

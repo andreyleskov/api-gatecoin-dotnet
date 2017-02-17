@@ -1,4 +1,4 @@
-using ServiceStack.ServiceInterface.ServiceModel;
+﻿using ServiceStack.ServiceInterface.ServiceModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,8 @@ namespace GatecoinServiceInterface.Model{
 public class WithdrawalLimit 
 {
 public System.String Currency {get; set; } 
-public System.Decimal? Limit {get; set; } 
+public System.Decimal Limit {get; set; } 
+public System.Decimal Minimum {get; set; } 
 }
 }
 

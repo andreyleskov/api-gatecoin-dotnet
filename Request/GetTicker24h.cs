@@ -6,7 +6,7 @@ using ServiceStack.ServiceHost;
 using ServiceStack.Common.Web;
 using GatecoinServiceInterface.Response;
 namespace GatecoinServiceInterface.Request{
-[Route("/Public/LiveTicker", "GET", Summary = @"Get live ticker for all currency", Notes = @"")]
+[Route("/Public/LiveTickers", "GET", Summary = @"Get live ticker for all currency", Notes = @"")]
 public class GetTicker24h : IReturn<TickersResponse>
 {
 }
