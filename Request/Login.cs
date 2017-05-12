@@ -15,6 +15,8 @@ public System.String UserName {get; set; }
 public System.String Password {get; set; } 
 [ApiMember(Name = "ValidationCode", Description = "Validation code", ParameterType = "query", DataType = "string", IsRequired = false)]
 public System.String ValidationCode {get; set; } 
+[ApiMember(Name = "CaptchaResponse", Description = "Captcha code", ParameterType = "query", DataType = "string", IsRequired = false)]
+public System.String CaptchaResponse {get; set; }
 }
 }
 

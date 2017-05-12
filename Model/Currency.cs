@@ -16,5 +16,6 @@ public System.String Symbol {get; set; }
 public Boolean IsDigital {get; set; } 
 public System.Int32 DisplayDecimalPlace {get; set; }
 public System.Boolean WithdrawalsEnabled { get; }
+public System.Decimal withdrawalFee {get; }
 }
 }
