@@ -46,7 +46,8 @@ namespace GatecoinServiceInterface.Client
                 if (HasAuthenticationKeys)
                 {
                     request.ContentType = ServiceStack.Common.Web.ContentType.Json;
-                    string unixTimestamp = ToUnixTimeStamp(DateTime.Now).ToString();
+                    // always use fixed-point with 3 digits after the decimal point independent of the current culture
+                    var unixTimestamp = ToUnixTimeStamp(DateTime.Now).ToString("F3", System.Globalization.CultureInfo.InvariantCulture);
 
                     var secret = privateKey;
                     var token = ServiceSignature.CreateToken(request, secret, unixTimestamp);
