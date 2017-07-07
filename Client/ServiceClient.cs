@@ -72,11 +72,11 @@ namespace GatecoinServiceInterface.Client
 
         private Action<HttpWebRequest> requestFilter;
 
-        public bool Login(string userName, string password, string validationCode)
+        public bool Login(string userName, string password, string validationCode, string captcha = null)
         {
             try
             {
-                var response = client.Post(new Login() { UserName = userName, Password = password, ValidationCode = validationCode });
+                var response = client.Post(new Login() { UserName = userName, Password = password, ValidationCode = validationCode, CaptchaResponse = captcha });
                 if (response.IsSuccess)
                 {
                     loginSession = response;
@@ -126,9 +126,9 @@ namespace GatecoinServiceInterface.Client
             }
         }
 
-        public bool Login(string userName, string password)
+        public bool Login(string userName, string password, string captcha = null)
         {
-            return Login(userName, password, null);
+            return Login(userName, password, null, captcha);
         }
 
         public void SetApiKey(string publicKey, string privateKey)

@@ -91,8 +91,6 @@
     <Compile Include="Request\GetTickerHisto.cs" />
     <Compile Include="Request\GetTicker24h.cs" />
     <Compile Include="Request\GetTicker.cs" />
-    <Compile Include="Request\GetStopOrdersHistory.cs" />
-    <Compile Include="Request\GetStopOrders.cs" />
     <Compile Include="Request\GetStatsHisto.cs" />
     <Compile Include="Request\GetSecurityQuestion.cs" />
     <Compile Include="Request\GetReferenceLanguage.cs" />
@@ -221,7 +219,6 @@
     <Compile Include="Response\TransactionsHistoryResponse.cs" />
     <Compile Include="Response\TickersResponse.cs" />
     <Compile Include="Response\TickerResponse.cs" />
-    <Compile Include="Response\StopOrdersResponse.cs" />
     <Compile Include="Response\SecurityQuestionResponse.cs" />
     <Compile Include="Response\RequestForQuoteResponse.cs" />
     <Compile Include="Response\RegisterUserResponse.cs" />
@@ -309,7 +306,6 @@
     <Compile Include="Model\TraderTransaction.cs" />
     <Compile Include="Model\UserQuickOrder.cs" />
     <Compile Include="Model\Transaction.cs" />
-    <Compile Include="Model\DynamicOrder.cs" />
     <Compile Include="Model\InternalTraderElectronicWallet.cs" />
     <Compile Include="Model\MarketData.cs" />
     <Compile Include="Model\TraderTicket.cs" />

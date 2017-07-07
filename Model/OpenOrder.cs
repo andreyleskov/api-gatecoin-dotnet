@@ -11,6 +11,7 @@ public class OpenOrder
 {
 public System.String Code {get; set; } 
 public System.String ClOrderId {get; set; } 
+public System.String OrigClOrderId {get; set; }
 public Byte Side {get; set; } 
 public System.Decimal Price {get; set; } 
 public System.Decimal InitialQuantity {get; set; } 
