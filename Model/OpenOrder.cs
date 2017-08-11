@@ -21,7 +21,7 @@ public System.String StatusDesc {get; set; }
 public Int64 TranSeqNo {get; set; } 
 public Byte Type {get; set; } 
 public System.DateTime Date {get; set; } 
-public List<TraderTransaction> Transactions {get; set; }
+public List<TraderTransaction> Trades {get; set; }
 }
 }
 
