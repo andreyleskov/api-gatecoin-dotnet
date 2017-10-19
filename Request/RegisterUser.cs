@@ -18,7 +18,9 @@ public Boolean IsCorporateAccount {get; set; }
 [ApiMember(Name = "language", Description = "language", ParameterType = "query", DataType = "string", IsRequired = true)]
 public System.String language {get; set; } 
 [ApiMember(Name = "ReferralCode", Description = "The referral code of user who recommend you to use gatecoin", ParameterType = "query", DataType = "string", IsRequired = false)]
-public System.String ReferralCode {get; set; } 
+public System.String ReferralCode {get; set; }
+[ApiMember(Name = "CaptchaResponse", Description = "Captcha code", ParameterType = "query", DataType = "string", IsRequired = false)]
+public System.String CaptchaResponse {get; set; }
 }
 }
 
