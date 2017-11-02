@@ -6,7 +6,7 @@
     <ProjectGuid>{09161B2C-37D0-402D-A34C-FCA2B1F132AF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>GatecoinServiceInterface</RootNamespace>
-    <AssemblyName>api-gatecoin-dotnet</AssemblyName>
+    <AssemblyName>GatecoinServiceInterface</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
