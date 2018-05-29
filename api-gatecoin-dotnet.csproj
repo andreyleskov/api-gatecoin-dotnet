@@ -345,6 +345,7 @@
     <Compile Include="Model\InitialAssetOfferingInfomation.cs" />
     <Compile Include="Response\Salesresponse.cs" />
     <Compile Include="Request\GetDetailsOfAllTheIAOs.cs" />
+    <Compile Include="Request\NewBankWithdrawals.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
