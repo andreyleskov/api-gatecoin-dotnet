@@ -339,6 +339,13 @@
     <Compile Include="Model\FeeRate.cs" />
     <Compile Include="Model\APIKey.cs" />
     <Compile Include="Model\Trades.cs" />
+    <Compile Include="Request\GetListOfParticipationRecordsInIAO.cs" />
+    <Compile Include="Model\InitialAssetOfferingParticipation.cs" />
+    <Compile Include="Response\ParticipationsResponse.cs" />
+    <Compile Include="Model\InitialAssetOfferingInfomation.cs" />
+    <Compile Include="Response\Salesresponse.cs" />
+    <Compile Include="Request\GetDetailsOfAllTheIAOs.cs" />
+    <Compile Include="Request\NewBankWithdrawals.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

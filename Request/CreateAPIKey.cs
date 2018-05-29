@@ -19,6 +19,8 @@ public Boolean AllowInfo {get; set; }
 public Boolean AllowTrade {get; set; } 
 [ApiMember(Name = "AllowWithdrawal", Description = "Allow currency withdrawal", ParameterType = "query", DataType = "bool", IsRequired = false)]
 public Boolean AllowWithdrawal {get; set; } 
+[ApiMember(Name = "AllowWrite", Description = "Allow write access", ParameterType = "query", DataType = "bool", IsRequired = false)]
+public Boolean AllowWrite {get; set; } 
 [ApiMember(Name = "AllowIPs", Description = "Only allowed ip can use the API key. No ip restriction if empty.", ParameterType = "query", DataType = "string[]", IsRequired = false)]
 public System.String[] AllowIPs {get; set; } 
 [ApiMember(Name = "TradeValidationCode", Description = "Enter trade validation code if trade validation is enabled and the api key allow trade", ParameterType = "query", DataType = "string", IsRequired = false)]
