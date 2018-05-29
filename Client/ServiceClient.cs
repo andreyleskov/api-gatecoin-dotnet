@@ -16,13 +16,19 @@ namespace GatecoinServiceInterface.Client
     {
         static readonly DateTime UnixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
         private JsonServiceClient client;
-        private LoginResponse loginSession;
-        private string publicKey;
-        private string privateKey;
+        protected string ApiPublicKey { get; set; }
+        protected string ApiPrivateKey { get; set; }
+        public string Proxy { get; set; }
 
         protected bool HasAuthenticationKeys {
             get {
-                return !String.IsNullOrWhiteSpace(publicKey) && !String.IsNullOrWhiteSpace(privateKey);
+                return !String.IsNullOrWhiteSpace(ApiPublicKey) && !String.IsNullOrWhiteSpace(ApiPrivateKey);
+            }
+        }
+
+        protected bool HasProxy {
+            get {
+                return !String.IsNullOrWhiteSpace(Proxy);
             }
         }
 
@@ -46,12 +52,16 @@ namespace GatecoinServiceInterface.Client
                 if (HasAuthenticationKeys)
                 {
                     request.ContentType = ServiceStack.Common.Web.ContentType.Json;
+
+                    if (HasProxy) {
+                        request.Proxy = new WebProxy(Proxy);
+                    }
                     // always use fixed-point with 3 digits after the decimal point independent of the current culture
                     var unixTimestamp = ToUnixTimeStamp(DateTime.Now).ToString("F3", System.Globalization.CultureInfo.InvariantCulture);
 
-                    var secret = privateKey;
+                    var secret = ApiPrivateKey;
                     var token = ServiceSignature.CreateToken(request, secret, unixTimestamp);
-                    request.Headers[ServiceSignature.API_PUBLIC_KEY] = publicKey;
+                    request.Headers[ServiceSignature.API_PUBLIC_KEY] = ApiPublicKey;
                     request.Headers[ServiceSignature.API_REQUEST_SIGNATURE] = token;
                     request.Headers[ServiceSignature.API_REQUEST_DATE] = unixTimestamp;
                 }
@@ -79,9 +89,8 @@ namespace GatecoinServiceInterface.Client
                 var response = client.Post(new Login() { UserName = userName, Password = password, ValidationCode = validationCode, CaptchaResponse = captcha });
                 if (response.IsSuccess)
                 {
-                    loginSession = response;
-                    publicKey = response.PublicKey;
-                    privateKey = response.ApiKey;
+                    ApiPublicKey = response.PublicKey;
+                    ApiPrivateKey = response.ApiKey;
                     if (client.LocalHttpWebRequestFilter == null)
                     {
                         client.LocalHttpWebRequestFilter += requestFilter;
@@ -116,9 +125,8 @@ namespace GatecoinServiceInterface.Client
                 }
             }
 
-            loginSession = null;
-            publicKey = null;
-            privateKey = null;
+            ApiPublicKey = null;
+            ApiPrivateKey = null;
             client.LocalHttpWebRequestFilter -= requestFilter;
             if (OnLogout != null)
             {
@@ -133,8 +141,8 @@ namespace GatecoinServiceInterface.Client
 
         public void SetApiKey(string publicKey, string privateKey)
         {
-            this.publicKey = publicKey;
-            this.privateKey = privateKey;
+            ApiPublicKey = publicKey;
+            ApiPrivateKey = privateKey;
             if (client.LocalHttpWebRequestFilter == null)
             {
                 client.LocalHttpWebRequestFilter += requestFilter;
@@ -143,8 +151,8 @@ namespace GatecoinServiceInterface.Client
 
         public void ClearApiKey()
         {
-            publicKey = null;
-            privateKey = null;
+            ApiPublicKey = null;
+            ApiPrivateKey = null;
             client.LocalHttpWebRequestFilter -= requestFilter;
         }
 
