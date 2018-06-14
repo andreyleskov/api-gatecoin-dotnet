@@ -11,4 +11,9 @@ namespace GatecoinServiceInterface.Response
     {
         public List<InitialAssetOfferingInformation> Sales { get; set; }
     }
+
+    public class SalesResponsePreview : CommonResponse
+    {
+        public List<InitialAssetOfferingInformationPreview> Sales { get; set; }
+    }
 }
