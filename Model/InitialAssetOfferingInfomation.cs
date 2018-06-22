@@ -24,4 +24,19 @@ namespace GatecoinServiceInterface.Model
         public System.DateTime StartDate { get; set; }
         public System.Double TotalOfferingAmountInBaseCurrency { get; set; }
     }
+
+    [Serializable]
+    public class InitialAssetOfferingInformationPreview : InitialAssetOfferingInformation
+    {
+        public System.String Description { get; set; }
+        public System.String WebsiteLink { get; set; }
+        public System.String WhitepaperLink { get; set; }
+        public System.String Blockchain { get; set; }
+        public System.Decimal PublicPriceInBaseCurrency { get; set; }
+        public System.String Name { get; set; }
+        public System.String TwitterLink { get; set; }
+        public System.String VideoLink { get; set; }
+        public System.String Hardcap { get; set; }
+        public System.Decimal PercentageTokenSale { get; set; }
+    }
 }
