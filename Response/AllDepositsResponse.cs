@@ -10,7 +10,6 @@ public class AllDepositsResponse : CommonResponse
 {
 public List<BankTransfer> BankTransfers {get; set; } 
 public List<DigitalCurrencyTransfer> DigiTransfers {get; set; } 
-public List<OkpayTransaction> OkpayTransfers {get; set; } 
 public List<InternalTransfer> InternalTransfers {get; set; } 
 }
 }
