@@ -346,6 +346,9 @@
     <Compile Include="Response\Salesresponse.cs" />
     <Compile Include="Request\GetDetailsOfAllTheIAOs.cs" />
     <Compile Include="Request\NewBankWithdrawals.cs" />
+    <Compile Include="Request\PostQuestionnaire.cs" />
+    <Compile Include="Response\GetTermsAndConditionsResponse.cs" />
+    <Compile Include="Request\AcceptTermsAndConditions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
