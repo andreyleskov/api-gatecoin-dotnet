@@ -349,6 +349,8 @@
     <Compile Include="Request\PostQuestionnaire.cs" />
     <Compile Include="Response\GetTermsAndConditionsResponse.cs" />
     <Compile Include="Request\AcceptTermsAndConditions.cs" />
+    <Compile Include="Request\RequestBankDepositInstruction.cs" />
+    <Compile Include="Request\DepositFiat.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
