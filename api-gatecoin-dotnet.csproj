@@ -351,6 +351,9 @@
     <Compile Include="Request\AcceptTermsAndConditions.cs" />
     <Compile Include="Request\RequestBankDepositInstruction.cs" />
     <Compile Include="Request\DepositFiat.cs" />
+    <Compile Include="Model\FiatDepositInfo.cs" />
+    <Compile Include="Response\FiatDepositsResponse.cs" />
+    <Compile Include="Request\GetFiatDepositsInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
