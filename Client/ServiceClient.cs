@@ -9,6 +9,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Security.Cryptography.X509Certificates;
 
 namespace GatecoinServiceInterface.Client
 {
@@ -44,6 +45,7 @@ namespace GatecoinServiceInterface.Client
 
         public ServiceClient(string url)
         {
+            ServicePointManager.ServerCertificateValidationCallback = (req, cert, chain, errors) => true;
             client = new JsonServiceClient(url);
             ServiceStack.Text.JsConfig<DateTime>.RawDeserializeFn = (arg) => { return UnixTimeStampToDateTime(arg); };
             ServiceStack.Text.JsConfig<DateTime?>.RawDeserializeFn = (arg) => { return arg == null ? null : (DateTime?)UnixTimeStampToDateTime(arg); };
