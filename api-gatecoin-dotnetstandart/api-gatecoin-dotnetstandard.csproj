@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>GatecoinServiceInterface</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ServiceStack.Client" Version="5.4.0" />
+    <PackageReference Include="ServiceStack.Common" Version="5.4.0" />
+    <PackageReference Include="ServiceStack.Interfaces" Version="5.4.0" />
+    <PackageReference Include="ServiceStack.Text" Version="5.4.0" />
+  </ItemGroup>
+
+</Project>
