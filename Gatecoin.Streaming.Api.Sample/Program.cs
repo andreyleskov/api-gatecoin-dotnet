@@ -2,7 +2,7 @@
 using Gatecoin.Streaming.Dto;
 using Newtonsoft.Json;
 
-namespace Gatecoin.Streaming.Api.Client
+namespace Gatecoin.Streaming.Api.Sample
 {
     internal class Program
     {

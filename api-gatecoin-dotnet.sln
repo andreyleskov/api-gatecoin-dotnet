@@ -7,13 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "api-gatecoin-dotnet", "api-
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gatecoin.Streaming.Api", "Gatecoin.Streaming.Api\Gatecoin.Streaming.Api.csproj", "{BC08D176-3039-4BCF-ABE2-834A1B0DD304}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gatecoin.Streaming.Api.Client", "Gatecoin.Streaming.Api.Client\Gatecoin.Streaming.Api.Client.csproj", "{B650703F-692D-407C-BC84-832DD5D288B1}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gatecoin.Streaming.Common", "Gatecoin.Streaming.Common\Gatecoin.Streaming.Common.csproj", "{F20687B4-408B-4488-8A95-2C6C1341CF3A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gatecoin.Streaming.Configuration", "Gatecoin.Streaming.Configuration\Gatecoin.Streaming.Configuration.csproj", "{A10EF757-6412-48F2-A6B2-3E3898CCDE24}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gatecoin.Streaming.Dto", "Gatecoin.Streaming.Dto\Gatecoin.Streaming.Dto.csproj", "{8D209FC0-8D05-49DA-AFCD-85AF2A73406B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gatecoin.Streaming.Api.Sample", "Gatecoin.Streaming.Api.Sample\Gatecoin.Streaming.Api.Sample.csproj", "{A56C7348-3A06-4392-8733-8296EF4A469D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,6 @@ Global
 		{BC08D176-3039-4BCF-ABE2-834A1B0DD304}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC08D176-3039-4BCF-ABE2-834A1B0DD304}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC08D176-3039-4BCF-ABE2-834A1B0DD304}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B650703F-692D-407C-BC84-832DD5D288B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B650703F-692D-407C-BC84-832DD5D288B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B650703F-692D-407C-BC84-832DD5D288B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B650703F-692D-407C-BC84-832DD5D288B1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F20687B4-408B-4488-8A95-2C6C1341CF3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F20687B4-408B-4488-8A95-2C6C1341CF3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F20687B4-408B-4488-8A95-2C6C1341CF3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,6 +41,10 @@ Global
 		{8D209FC0-8D05-49DA-AFCD-85AF2A73406B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D209FC0-8D05-49DA-AFCD-85AF2A73406B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D209FC0-8D05-49DA-AFCD-85AF2A73406B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A56C7348-3A06-4392-8733-8296EF4A469D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A56C7348-3A06-4392-8733-8296EF4A469D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A56C7348-3A06-4392-8733-8296EF4A469D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A56C7348-3A06-4392-8733-8296EF4A469D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
