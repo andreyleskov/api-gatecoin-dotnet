@@ -2,7 +2,7 @@
 
 namespace GatecoinServiceInterface.WebSocket.Client
 {
-    internal interface IStreamingClientTypeBuilder
+    public interface IStreamingClientBuilder
     {
         /// <summary>
         /// Builds and creates Gatecoin streaming client

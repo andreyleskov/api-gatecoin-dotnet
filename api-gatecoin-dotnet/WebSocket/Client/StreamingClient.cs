@@ -100,10 +100,11 @@ namespace GatecoinServiceInterface.WebSocket.Client
         }
 
         [PublicAPI]
-        public async Task Start()
+        public async Task<IStreamingClient<TDto>> Start()
         {
             await _connection.StartAsync();
             _logger.Log(LogLevel.Information, "Connection started");
+            return this;
         }
 
         public void Dispose()

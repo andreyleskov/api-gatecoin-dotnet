@@ -6,18 +6,17 @@ using Newtonsoft.Json;
 
 namespace GatecoinServiceInterface.WebSocket.Sample
 {
-    public class Program
+    public class Run
     {
-        public async Task Start()
+        public static async Task Start()
         {
-            var builder = new StreamingClientFactory();
+            var builder = new StreamingClientBuilder("https://streaming.gtcprojects.com");
 
-            using (var client = await builder.CreateTradeClient())
+            using (var client = await builder.BuildTraderClient().Start())
             {
                 void TradeHandler(TradeDto arg) => Console.WriteLine(JsonConvert.SerializeObject(arg));
 
                 var subscription = client.SubscribeAll(TradeHandler);
-
                 var subscriptionBtcUsd = client.Subscribe("BTCUSD", TradeHandler);
 
                 Console.WriteLine("Waiting for events");

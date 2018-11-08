@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28010.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "api-gatecoin-dotnet", "api-gatecoin-dotnet\api-gatecoin-dotnet.csproj", "{55EAB370-6E89-472D-8EAB-394427D84600}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamingClient", "StreamingClient\StreamingClient.csproj", "{6159DDF6-5387-437B-818D-547F54438549}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{55EAB370-6E89-472D-8EAB-394427D84600}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55EAB370-6E89-472D-8EAB-394427D84600}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55EAB370-6E89-472D-8EAB-394427D84600}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6159DDF6-5387-437B-818D-547F54438549}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6159DDF6-5387-437B-818D-547F54438549}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6159DDF6-5387-437B-818D-547F54438549}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6159DDF6-5387-437B-818D-547F54438549}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

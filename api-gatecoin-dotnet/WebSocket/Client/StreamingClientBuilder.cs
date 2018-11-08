@@ -5,39 +5,39 @@ using Microsoft.Extensions.Logging;
 
 namespace GatecoinServiceInterface.WebSocket.Client
 {
-    internal sealed class StreamingClientTypeBuilder : IStreamingClientTypeBuilder
+    public sealed class StreamingClientBuilder : IStreamingClientBuilder
     {
         private readonly string _url;
         private HttpMessageHandler _httpMessageHandler;
         private ILoggerFactory _loggerFactory;
 
-        public StreamingClientTypeBuilder()
+        public StreamingClientBuilder(string url)
         {
-            _url = "https://streaming.gtcprojects.com";
+            if (string.IsNullOrWhiteSpace(url))
+            {
+                throw new ArgumentException("Url cannot be null", nameof(url));
+            }
+
+            _url = url;
         }
 
         public IStreamingClient<TDto> BuildClient<TDto>()
         {
-            if (string.IsNullOrWhiteSpace(_url))
-            {
-                throw new ArgumentException("Url cannot be null", nameof(_url));
-            }
-
             return new StreamingClient<TDto>(
-                _url,
-                _httpMessageHandler,
-                _loggerFactory);
+                    _url,
+                    _httpMessageHandler,
+                    _loggerFactory);
         }
 
         [PublicAPI]
-        public StreamingClientTypeBuilder WithHttpMessageHandler(HttpMessageHandler httpMessageHandler)
+        public StreamingClientBuilder WithHttpMessageHandler(HttpMessageHandler httpMessageHandler)
         {
             _httpMessageHandler = httpMessageHandler;
             return this;
         }
 
         [PublicAPI]
-        public StreamingClientTypeBuilder WithLoggerFactory(ILoggerFactory loggerFactory)
+        public StreamingClientBuilder WithLoggerFactory(ILoggerFactory loggerFactory)
         {
             _loggerFactory = loggerFactory;
             return this;

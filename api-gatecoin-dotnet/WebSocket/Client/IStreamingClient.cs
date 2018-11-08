@@ -4,13 +4,13 @@ using JetBrains.Annotations;
 
 namespace GatecoinServiceInterface.WebSocket.Client
 {
-    public interface IStreamingClient<out TDto> : IDisposable
+    public interface IStreamingClient<TDto> : IDisposable
     {
         /// <summary>
         /// Starts connection
         /// </summary>
         [PublicAPI]
-        Task Start();
+        Task<IStreamingClient<TDto>> Start();
 
         /// <summary>
         /// Registers a handler that will be invoked with all events.
@@ -19,7 +19,7 @@ namespace GatecoinServiceInterface.WebSocket.Client
         /// <returns>A subscription that can be disposed to unsubscribe from the hub method.</returns>
         [PublicAPI]
         [Pure]
-        IDisposable SubscribeAll(Action<TDto> handler);
+        IDisposable SubscribeAll([NotNull] Action<TDto> handler);
 
 
         /// <summary>
@@ -30,6 +30,6 @@ namespace GatecoinServiceInterface.WebSocket.Client
         /// <returns>A subscription that can be disposed to unsubscribe from the hub method.</returns>
         [PublicAPI]
         [Pure]
-        IDisposable Subscribe(string currencyPair, Action<TDto> handler);
+        IDisposable Subscribe([NotNull] string currencyPair, [NotNull] Action<TDto> handler);
     }
 }
