@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="JetBrains.Annotations" Version="2018.2.1" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="1.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Gatecoin.Streaming.Common\Gatecoin.Streaming.Common.csproj" />
+    <ProjectReference Include="..\Gatecoin.Streaming.Dto\Gatecoin.Streaming.Dto.csproj" />
+  </ItemGroup>
+
+</Project>
