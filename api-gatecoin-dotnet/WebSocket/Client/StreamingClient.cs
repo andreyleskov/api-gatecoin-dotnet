@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Gatecoin.Streaming.Dto;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 
-namespace Gatecoin.Streaming.Api
+namespace GatecoinServiceInterface.WebSocket.Client
 {
-    internal sealed class StreamingClient<TDto> : IStreamingClient<TDto> where TDto : BaseDto
+    internal sealed class StreamingClient<TDto> : IStreamingClient<TDto>
     {
         private readonly HubConnection _connection;
         private readonly HttpMessageHandler _httpMessageHandler;

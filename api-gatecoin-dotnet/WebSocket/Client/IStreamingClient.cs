@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Gatecoin.Streaming.Dto;
 using JetBrains.Annotations;
 
-namespace Gatecoin.Streaming.Api
+namespace GatecoinServiceInterface.WebSocket.Client
 {
-    public interface IStreamingClient<out TDto> : IDisposable where TDto : BaseDto
+    public interface IStreamingClient<out TDto> : IDisposable
     {
         /// <summary>
         /// Starts connection

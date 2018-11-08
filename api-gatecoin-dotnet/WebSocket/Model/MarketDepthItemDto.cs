@@ -1,7 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Gatecoin.Streaming.Dto
+namespace GatecoinServiceInterface.WebSocket.Model
 {
+    [JsonObject(MemberSerialization.OptIn)]
     public class MarketDepthItemDto
     {
         [JsonProperty("p")]

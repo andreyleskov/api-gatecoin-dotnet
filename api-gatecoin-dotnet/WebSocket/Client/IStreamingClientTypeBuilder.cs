@@ -1,9 +1,8 @@
-﻿using Gatecoin.Streaming.Dto;
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
 
-namespace Gatecoin.Streaming.Api
+namespace GatecoinServiceInterface.WebSocket.Client
 {
-    public interface IStreamingClientBuilder
+    internal interface IStreamingClientTypeBuilder
     {
         /// <summary>
         /// Builds and creates Gatecoin streaming client
@@ -12,6 +11,6 @@ namespace Gatecoin.Streaming.Api
         /// <returns>return Gatecoin streaming client</returns>
         [PublicAPI]
         [Pure]
-        IStreamingClient<TDto> BuildClient<TDto>() where TDto : BaseDto;
+        IStreamingClient<TDto> BuildClient<TDto>();
     }
 }

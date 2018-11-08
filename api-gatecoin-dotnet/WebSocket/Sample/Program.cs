@@ -1,22 +1,23 @@
 ﻿using System;
-using Gatecoin.Streaming.Dto;
+using System.Threading.Tasks;
+using GatecoinServiceInterface.WebSocket.Client;
+using GatecoinServiceInterface.WebSocket.Model;
 using Newtonsoft.Json;
 
-namespace Gatecoin.Streaming.Api.Sample
+namespace GatecoinServiceInterface.WebSocket.Sample
 {
-    internal class Program
+    public class Program
     {
-        private static void Main()
+        public async Task Start()
         {
-            var builder = new StreamingClientBuilder();
+            var builder = new StreamingClientFactory();
 
-            using (var client = builder.BuildClient<TradeDto>())
+            using (var client = await builder.CreateTradeClient())
             {
-                client.Start().Wait();
-
                 void TradeHandler(TradeDto arg) => Console.WriteLine(JsonConvert.SerializeObject(arg));
 
                 var subscription = client.SubscribeAll(TradeHandler);
+
                 var subscriptionBtcUsd = client.Subscribe("BTCUSD", TradeHandler);
 
                 Console.WriteLine("Waiting for events");

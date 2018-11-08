@@ -1,22 +1,22 @@
 ﻿using System;
 using System.Net.Http;
-using Gatecoin.Streaming.Dto;
+using JetBrains.Annotations;
 using Microsoft.Extensions.Logging;
 
-namespace Gatecoin.Streaming.Api
+namespace GatecoinServiceInterface.WebSocket.Client
 {
-    public sealed class StreamingClientBuilder : IStreamingClientBuilder
+    internal sealed class StreamingClientTypeBuilder : IStreamingClientTypeBuilder
     {
         private readonly string _url;
         private HttpMessageHandler _httpMessageHandler;
         private ILoggerFactory _loggerFactory;
 
-        public StreamingClientBuilder()
+        public StreamingClientTypeBuilder()
         {
             _url = "https://streaming.gtcprojects.com";
         }
 
-        public IStreamingClient<TDto> BuildClient<TDto>() where TDto : BaseDto
+        public IStreamingClient<TDto> BuildClient<TDto>()
         {
             if (string.IsNullOrWhiteSpace(_url))
             {
@@ -29,13 +29,15 @@ namespace Gatecoin.Streaming.Api
                 _loggerFactory);
         }
 
-        public StreamingClientBuilder WithHttpMessageHandler(HttpMessageHandler httpMessageHandler)
+        [PublicAPI]
+        public StreamingClientTypeBuilder WithHttpMessageHandler(HttpMessageHandler httpMessageHandler)
         {
             _httpMessageHandler = httpMessageHandler;
             return this;
         }
 
-        public StreamingClientBuilder WithLoggerFactory(ILoggerFactory loggerFactory)
+        [PublicAPI]
+        public StreamingClientTypeBuilder WithLoggerFactory(ILoggerFactory loggerFactory)
         {
             _loggerFactory = loggerFactory;
             return this;

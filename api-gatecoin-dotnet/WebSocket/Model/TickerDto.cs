@@ -1,8 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Gatecoin.Streaming.Dto
+namespace GatecoinServiceInterface.WebSocket.Model
 {
-    public class TickerDto : BaseDto
+    [JsonObject(MemberSerialization.OptIn)]
+    public class TickerDto
     {
         [JsonProperty("currencypair", Order = 1)]
         public string CurrencyPair { get; set; }

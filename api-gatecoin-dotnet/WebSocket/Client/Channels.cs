@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using Gatecoin.Streaming.Dto;
+using GatecoinServiceInterface.WebSocket.Model;
 
-namespace Gatecoin.Streaming.Api
+namespace GatecoinServiceInterface.WebSocket.Client
 {
     internal static class Channels
     {
         public const string Trade = "trade";
-        //public const string Order = "order";
         public const string MarketDepth = "marketdepth";
         public const string Ticker = "ticker";
         private static readonly Dictionary<Type, string> TypeMapping;
@@ -18,24 +17,20 @@ namespace Gatecoin.Streaming.Api
                           {
                               [typeof(MarketDepthDto)] = MarketDepth,
                               [typeof(TradeDto)] = Trade,
-                             // [typeof(OrderDto)] = Order,
                               [typeof(TickerDto)] = Ticker
                           };
         }
 
-        public static string GetChannelHub<TDto>() where TDto : BaseDto
+        public static string GetChannelHub<TDto>()
         {
-            return $"/v1/hub/{TypeMapping[typeof(TDto)]}";
-        }
+            var type = typeof(TDto);
 
-        public static string GetChannelHub(string channel)
-        {
-            return $"/v1/hub/{channel}";
-        }
+            if (!TypeMapping.ContainsKey(type))
+            {
+                throw new NotSupportedException($"The model type '{type}' is not supported");
+            }
 
-        public static string GetChannelController(string channel)
-        {
-            return $"/v1/{channel}";
+            return $"/v1/hub/{TypeMapping[type]}";
         }
     }
 }

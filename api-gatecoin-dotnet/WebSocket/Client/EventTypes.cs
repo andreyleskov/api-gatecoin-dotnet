@@ -1,4 +1,4 @@
-﻿namespace Gatecoin.Streaming.Api
+﻿namespace GatecoinServiceInterface.WebSocket.Client
 {
     internal sealed class EventTypes
     {
