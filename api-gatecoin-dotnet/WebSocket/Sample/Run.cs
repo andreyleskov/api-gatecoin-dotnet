@@ -10,7 +10,7 @@ namespace GatecoinServiceInterface.WebSocket.Sample
     {
         public static async Task Start()
         {
-            var builder = new StreamingClientBuilder("https://streaming.gtcprojects.com");
+            var builder = new StreamingClientBuilder("put url here");
 
             using (var client = await builder.BuildTraderClient().Start())
             {
