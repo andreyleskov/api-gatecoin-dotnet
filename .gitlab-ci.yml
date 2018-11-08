@@ -6,6 +6,6 @@ stages:
 build_package:
   stage: build
   script:
-    - build.sh
+    - bash build.sh
 
 
