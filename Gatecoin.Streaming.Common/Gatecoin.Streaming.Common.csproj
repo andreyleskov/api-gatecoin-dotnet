@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Gatecoin.Streaming.Configuration\Gatecoin.Streaming.Configuration.csproj" />
     <ProjectReference Include="..\Gatecoin.Streaming.Dto\Gatecoin.Streaming.Dto.csproj" />
   </ItemGroup>
 
