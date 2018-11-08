@@ -15,7 +15,7 @@ if [ -z $version ]; then
     version=$(git tag |tail -1)
 fi
 
-informationVersion="$version-$branch+$buildNumber"
+informationVersion="$version+$buildNumber"
 fileVersion="$version.$buildNumber"
 
 
