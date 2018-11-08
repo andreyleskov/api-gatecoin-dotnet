@@ -1,0 +1,11 @@
+image: registry.gitlab.com/gatecoin/backend:dotnetcore
+
+stages:
+- build
+
+build_package:
+  stage: build
+  script:
+  - build.sh
+
+
