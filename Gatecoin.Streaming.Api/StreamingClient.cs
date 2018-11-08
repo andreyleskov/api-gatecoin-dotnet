@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Gatecoin.Streaming.Common;
 using Gatecoin.Streaming.Dto;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.SignalR.Client;

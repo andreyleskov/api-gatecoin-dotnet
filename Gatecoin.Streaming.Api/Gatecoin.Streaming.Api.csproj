@@ -10,7 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Gatecoin.Streaming.Common\Gatecoin.Streaming.Common.csproj" />
     <ProjectReference Include="..\Gatecoin.Streaming.Dto\Gatecoin.Streaming.Dto.csproj" />
   </ItemGroup>
 

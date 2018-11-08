@@ -1,10 +1,10 @@
-﻿using Gatecoin.Streaming.Dto;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Gatecoin.Streaming.Dto;
 
-namespace Gatecoin.Streaming.Common
+namespace Gatecoin.Streaming.Api
 {
-    public static class Channels
+    internal static class Channels
     {
         public const string Trade = "trade";
         //public const string Order = "order";
