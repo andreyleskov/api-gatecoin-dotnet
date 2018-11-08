@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "api-gatecoin-dotnetstandard", "api-gatecoin-dotnetstandart\api-gatecoin-dotnetstandard.csproj", "{1BA88F58-BFF0-4789-B683-FDE33874B809}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "api-gatecoin-dotnet", "api-gatecoin-dotnet\api-gatecoin-dotnet.csproj", "{55EAB370-6E89-472D-8EAB-394427D84600}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1BA88F58-BFF0-4789-B683-FDE33874B809}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1BA88F58-BFF0-4789-B683-FDE33874B809}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1BA88F58-BFF0-4789-B683-FDE33874B809}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1BA88F58-BFF0-4789-B683-FDE33874B809}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55EAB370-6E89-472D-8EAB-394427D84600}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55EAB370-6E89-472D-8EAB-394427D84600}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55EAB370-6E89-472D-8EAB-394427D84600}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55EAB370-6E89-472D-8EAB-394427D84600}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
