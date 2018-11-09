@@ -80,7 +80,7 @@ To ***unsubscribe*** from all events the ```Dispose``` method should be invoked.
 ```
 public static async Task Start()
 {
-    var builder = new StreamingClientBuilder("put url here");
+    var builder = new StreamingClientBuilder("https://streaming.gatecoin.com");
 
     using (var client = await builder.BuildTraderClient().Start())
     {
