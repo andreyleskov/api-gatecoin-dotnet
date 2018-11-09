@@ -7,11 +7,11 @@ stages:
 build_package:
   stage: build
   script:
-    - bash build.sh Release $CI_JOB_ID "packages"
+    - bash build.sh Release $env:CI_JOB_ID "packages"
 
 publish_package:
   stage: publish
   script:
-    - bash publish.sh "https://gds.myget.org/F/public/api/v2/package" "$MYGET_API_KEY_PUBLIC" "packages"
+    - bash publish.sh "https://gds.myget.org/F/public/api/v2/package" $env:MYGET_API_KEY_PUBLIC "packages"
 
 
