@@ -1,9 +1,7 @@
 
 API Client CSharp
-[![Build Status](https://gitlab.com/gatecoin/backend-team/api-gatecoin-dotnet/badges/master/build.svg)]
-(https://gitlab.com/gatecoin/backend-team/api-gatecoin-dotnet)
 =================
-
+[![Build Status](https://gitlab.com/gatecoin/backend-team/api-gatecoin-dotnet/badges/master/build.svg)](https://gitlab.com/gatecoin/backend-team/api-gatecoin-dotnet)
 GatecoinServiceInterface is a toolkit for accessing the Http API, in C#
 
 API Streaming client
