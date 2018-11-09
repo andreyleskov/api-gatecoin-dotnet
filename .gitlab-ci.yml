@@ -2,10 +2,17 @@ image: registry.gitlab.com/gatecoin/backend:dotnetcore
 
 stages:
   - build
+  - publish
 
 build_package:
   stage: build
   script:
-    - bash build.sh
+    - bash build.sh Release
+    - bash pack.sh
+
+publish_package:
+  stage: publish
+  script:
+    - publish.sh "https://gds.myget.org/F/public/api/v2/package" "$MYGET_API_KEY_PUBLIC"
 
 
