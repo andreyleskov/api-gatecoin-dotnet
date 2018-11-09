@@ -1,0 +1,16 @@
+image: registry.gitlab.com/gatecoin/backend:dotnetcore
+
+stages:
+  - build
+
+build_and_publish_package:
+  stage: build
+  artifacts:
+    paths:
+      - packages
+    expire_in: 6 month
+  script:
+    - bash build.sh Release "$CI_JOB_ID" "packages"
+    - bash publish.sh "https://gds.myget.org/F/public/api/v2/package" "$MYGET_API_KEY_PUBLIC" "packages"
+
+
