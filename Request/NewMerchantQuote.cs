@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Web;
 using ServiceStack.Common;
-using ServiceStack.ServiceHost;
-using ServiceStack.Common.Web;
+using ServiceStack;
+
 using GatecoinServiceInterface.Response;
 namespace GatecoinServiceInterface.Request{
 [Route("/Merchant/Payment/Quote", "POST", Summary = @"Request a quote for quick order", Notes = @"")]

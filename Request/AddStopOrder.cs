@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Web;
 using ServiceStack.Common;
-using ServiceStack.ServiceHost;
-using ServiceStack.Common.Web;
+using ServiceStack;
+
 using GatecoinServiceInterface.Response;
 namespace GatecoinServiceInterface.Request{
 [Route("/Trade/StopOrders", "POST", Summary = @"Place a stop order at the exchange.", Notes = @"The account needs to be approved before transfer is possible.")]

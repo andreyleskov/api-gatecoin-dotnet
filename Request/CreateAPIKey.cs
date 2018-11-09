@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Web;
 using ServiceStack.Common;
-using ServiceStack.ServiceHost;
-using ServiceStack.Common.Web;
+using ServiceStack;
+
 using GatecoinServiceInterface.Response;
 namespace GatecoinServiceInterface.Request{
 [Route("/APIKey/APIKey", "POST", Summary = @"Create a new API key for logged in user", Notes = @"")]

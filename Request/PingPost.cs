@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Web;
 using ServiceStack.Common;
-using ServiceStack.ServiceHost;
-using ServiceStack.Common.Web;
+using ServiceStack;
+
 using GatecoinServiceInterface.Response;
 namespace GatecoinServiceInterface.Request{
 [Route("/Ping", "POST", Summary = @"Post a string, then get it back.", Notes = @"Implementation notes...")]

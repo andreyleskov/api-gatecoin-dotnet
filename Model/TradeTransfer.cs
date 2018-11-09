@@ -1,5 +1,5 @@
 ﻿using System;
-using ServiceStack.ServiceInterface.ServiceModel;
+using ServiceStack;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

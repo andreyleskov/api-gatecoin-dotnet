@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Web;
 using ServiceStack.Common;
-using ServiceStack.ServiceHost;
-using ServiceStack.Common.Web;
+using ServiceStack;
+
 using GatecoinServiceInterface.Response;
 namespace GatecoinServiceInterface.Request{
 [Route("/Account/PhoneValidation", "POST", Summary = @"Enable phone validation", Notes = @"If authCode is empty, system will send an authCode the user's phone number. When user receive the code, call this funcion again with the code.")]
