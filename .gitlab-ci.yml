@@ -13,6 +13,6 @@ build_package:
 publish_package:
   stage: publish
   script:
-    - publish.sh "https://gds.myget.org/F/public/api/v2/package" "$MYGET_API_KEY_PUBLIC"
+    - bash publish.sh "https://gds.myget.org/F/public/api/v2/package" "$MYGET_API_KEY_PUBLIC"
 
 
