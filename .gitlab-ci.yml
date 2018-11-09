@@ -7,7 +7,7 @@ stages:
 build_package:
   stage: build
   script:
-    - bash build.sh Release "$CI_BUILD_ID" "packages"
+    - bash build.sh Release "$CI_JOB_ID" "packages"
 
 publish_package:
   stage: publish

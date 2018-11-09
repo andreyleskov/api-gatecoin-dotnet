@@ -2,16 +2,17 @@
 set -e
 
 buildConfig=Release
-if [ $# -eq 1 ]; then
+if [ $# -ge 1 ]; then
     buildConfig=$1
 fi
 
-if [ $# -eq 2 ]; then
+if [ $# -ge 2 ]; then
     buildNumber=$2
 fi
 
 packagesTempFolder=packages
-if [ $# -eq 3 ]; then
+
+if [ $# -ge 3 ]; then
     packagesTempFolder=$3
 fi
 
@@ -56,7 +57,7 @@ dotnet restore api-gatecoin-dotnet.sln #--configfile src/.nuget/NuGet.Config
 dotnet publish api-gatecoin-dotnet.sln /p:Version=$version /p:FileVersion=$fileVersion /p:InformationVersion="${informationVersion}" --no-restore --configuration $buildConfig
 
 echo "Packing..."
-mkdir -p $PackagesTempFolder
+mkdir -p $packagesTempFolder
 find ./ -type f -iname "api-gatecoin-dotnet.*.nupkg$" -exec rm {} \;
 
 dotnet pack  api-gatecoin-dotnet.sln --configuration Release --verbosity Minimal /P:Version=$version
