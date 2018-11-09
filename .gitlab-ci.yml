@@ -7,6 +7,7 @@ stages:
 build_package:
   stage: build
   script:
+    - echo $CI_JOB_ID
     - bash build.sh Release $CI_JOB_ID "packages"
 
 publish_package:
