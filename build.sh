@@ -41,7 +41,8 @@ if [ "${stage}" = "" ]; then
     version=${numericVersion}
 else
     informationVersion="${major}.${minor} ${stage}"
-    version=${numericVersion}-${stage}${commit_num}+build.${buildNumber}  
+    version=${numericVersion}-${stage}${commit_num}
+    #version=${numericVersion}-${stage}${commit_num}+build.${buildNumber}    
 fi
 
 
