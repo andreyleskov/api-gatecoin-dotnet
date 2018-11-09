@@ -1,9 +1,55 @@
 
 API Client CSharp
 =================
-[![Build Status](https://gitlab.com/gatecoin/backend-team/api-gatecoin-dotnet/badges/master/build.svg)](https://gitlab.com/gatecoin/backend-team/api-gatecoin-dotnet)
+#[![Build Status](https://gitlab.com/gatecoin/backend-team/api-gatecoin-dotnet/badges/master/build.svg)](https://gitlab.com/gatecoin/backend-team/api-gatecoin-dotnet)
 GatecoinServiceInterface is a toolkit for accessing the Http API, in C#
 
+
+```
+using System;
+using System.Linq;
+
+using GatecoinServiceInterface.Client;
+using GatecoinServiceInterface.Model;
+using GatecoinServiceInterface.Response;
+using GatecoinServiceInterface.Request;
+
+namespace GatecoinApiClientExample
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            const string publicApiKey = "PUBLIC_API_KEY";
+            const string privateApiKey = "PRIVATE_API_KEY";
+
+            var GatecoinClient = new ServiceClient();
+            GatecoinClient.SetApiKey(publicApiKey, privateApiKey);
+
+            var balances = GatecoinClient.Get<BalancesResponse>("/Balance/Balances").Balances;
+            var availableHkdBalance = 
+                balances.SingleOrDefault(b => b.Currency == "HKD").AvailableBalance;
+
+            var buyBtcOrder = new AddOrder()
+            {
+                Code = "BTCHKD",
+                Way = "Bid",
+                Amount = 0.25m,
+                Price = 50000m,
+            };
+
+            var placedOrderId = GatecoinClient.Post<AddOrderResponse>("/Trade/Orders/", buyBtcOrder).ClOrderId;
+            Console.WriteLine($"Sucessfully created Order {placedOrderId}");
+
+            var cancelOrder = GatecoinClient.Delete<CommonResponse>($"/Trade/Orders/{placedOrderId}");
+            if (cancelOrder.ResponseStatus.Message == "OK") 
+            {
+                Console.WriteLine($"Sucessfully cancelled order {placedOrderId}");
+            }
+        }
+    }
+}
+```
 API Streaming client
 =================
 
