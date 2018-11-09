@@ -2,10 +2,9 @@ image: registry.gitlab.com/gatecoin/backend:dotnetcore
 
 stages:
   - build
-  - publish
 
-build_package:
-  stage: buildAndPublish
+build_and_publish_package:
+  stage: build
   artifacts:
     paths:
       - packages
