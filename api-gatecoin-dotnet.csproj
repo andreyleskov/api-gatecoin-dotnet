@@ -9,7 +9,7 @@
     <PackageTags>Gatecoin</PackageTags>
     <Copyright>Copyright ©Gatecoin</Copyright>
     <PackageIconUrl>https://github.com/Gatecoin/api-gatecoin-dotnet/blob/master/logo.png</PackageIconUrl>
-    <PackageProjectUrl>https://gds.myget.org/F/public/api/v3/index.json</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/Gatecoin/api-gatecoin-dotnet</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Gatecoin/api-gatecoin-dotnet</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageLicenseUrl>https://github.com/Gatecoin/api-gatecoin-dotnet/blob/master/LICENSE</PackageLicenseUrl>

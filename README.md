@@ -2,6 +2,9 @@ API Client CSharp
 =================
 
 GatecoinServiceInterface is a toolkit for accessing the Http API, in C#
+
+It can be installed as a nuget package from https://gds.myget.org/feed/public/package/nuget/api-gatecoin-dotnet
+
 Usage example: 
 
 ```
