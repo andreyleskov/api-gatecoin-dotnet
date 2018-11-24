@@ -56,7 +56,7 @@ namespace GatecoinServiceInterface.WebSocket.Client
                         if (token != null)
                         {
                             options.Headers.Add(ApiPublicKey, token.PublicKey);
-                            options.Headers.Add(ApiRequestSignature, token.EncryptedMessage);
+                            options.Headers.Add(ApiRequestSignature, token.SignedMessage);
                             options.Headers.Add(ApiRequestDate, token.DateTime.ToUnixTimeString());
                         }
                     })
@@ -134,7 +134,7 @@ namespace GatecoinServiceInterface.WebSocket.Client
         {
             return
                 !string.IsNullOrWhiteSpace(token.PublicKey) &&
-                !string.IsNullOrWhiteSpace(token.EncryptedMessage) &&
+                !string.IsNullOrWhiteSpace(token.SignedMessage) &&
                 token.DateTime != default(DateTime);
         }
     }

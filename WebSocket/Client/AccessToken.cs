@@ -15,7 +15,7 @@ namespace GatecoinServiceInterface.WebSocket.Client
         /// <summary>
         /// Encrypted Message
         /// </summary>
-        public string EncryptedMessage { get; set; }
+        public string SignedMessage { get; set; }
 
         /// <summary>
         /// RequestDate
