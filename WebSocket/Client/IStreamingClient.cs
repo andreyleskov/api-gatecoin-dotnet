@@ -9,8 +9,17 @@ namespace GatecoinServiceInterface.WebSocket.Client
         /// <summary>
         /// Starts connection
         /// </summary>
+        /// <returns>Returns the current IStreamingClient instance</returns>
         [PublicAPI]
         Task<IStreamingClient<TDto>> Start();
+
+        /// <summary>
+        /// Stop the connection
+        /// </summary>
+        /// <returns>Returns the current IStreamingClient instance</returns>
+        [PublicAPI]
+        [Pure]
+        Task<IStreamingClient<TDto>> Stop();
 
         /// <summary>
         /// Registers a handler that will be invoked with all events.
@@ -31,5 +40,10 @@ namespace GatecoinServiceInterface.WebSocket.Client
         [PublicAPI]
         [Pure]
         IDisposable Subscribe([NotNull] string currencyPair, [NotNull] Action<TDto> handler);
+
+        /// <summary>
+        /// Event that will be triggered when the connection ends.
+        /// </summary>
+        event EventHandler<DisconnectEventArgs<TDto>> Disconnected;
     }
 }
