@@ -11,12 +11,17 @@ namespace GatecoinServiceInterface.WebSocket.Client
 {
     internal sealed class StreamingClient<TDto> : IStreamingClient<TDto>
     {
+        private const string ApiPublicKey = "API_PUBLIC_KEY";
+        private const string ApiRequestSignature = "API_REQUEST_SIGNATURE";
+        private const string ApiRequestDate = "API_REQUEST_DATE";
+
         private readonly HubConnection _connection;
         private readonly HttpMessageHandler _httpMessageHandler;
         private readonly ILogger _logger;
 
         internal StreamingClient(
             string url,
+            AccessToken token = null,
             HttpMessageHandler httpMessageHandler = null,
             ILoggerFactory loggerFactory = null)
         {
@@ -31,23 +36,38 @@ namespace GatecoinServiceInterface.WebSocket.Client
 
             url = url.TrimEnd('/');
 
-            var urlHub = $"{url}{Channels.GetChannelHub<TDto>()}";
+            if (token != null && !IsTokenValid(token))
+            {
+                throw new ArgumentException("If AccessToken is passed as a parameter, all the fields should be valid");
+            }
+
+            var urlHub = token != null ? $"{url}{Channels.GetPrivateChannelHub<TDto>()}" : $"{url}{Channels.GetChannelHub<TDto>()}";
 
             _connection = new HubConnectionBuilder()
                 .WithUrl(
                     urlHub,
                     options =>
                     {
-                        if (httpMessageHandler == null)
+                        if (httpMessageHandler != null)
                         {
-                            return;
+                            options.HttpMessageHandlerFactory = _ => httpMessageHandler;
                         }
 
-                        options.HttpMessageHandlerFactory = _ => httpMessageHandler;
+                        if (token != null)
+                        {
+                            options.Headers.Add(ApiPublicKey, token.PublicKey);
+                            options.Headers.Add(ApiRequestSignature, token.SignedMessage);
+                            options.Headers.Add(ApiRequestDate, token.DateTime.ToUnixTimeString());
+                        }
                     })
                 .AddJsonProtocol()
                 .Build();
+
+            _connection.Closed += OnConnectionOnClosed;
+
         }
+        
+        public event EventHandler<DisconnectEventArgs<TDto>> Disconnected;
 
         [Pure]
         [PublicAPI]
@@ -107,12 +127,43 @@ namespace GatecoinServiceInterface.WebSocket.Client
             return this;
         }
 
+        [Pure]
+        [PublicAPI]
+        public async Task<IStreamingClient<TDto>> Stop()
+        {
+            await _connection.StopAsync();
+            return this;
+        }
+
         public void Dispose()
         {
-            // TODO: I don't like this, but in the time scope we need to put it off
             _connection?.StopAsync().Wait();
             _connection?.DisposeAsync().Wait();
             _httpMessageHandler?.Dispose();
+        }
+
+        private static bool IsTokenValid(AccessToken token)
+        {
+            return
+                !string.IsNullOrWhiteSpace(token.PublicKey) &&
+                !string.IsNullOrWhiteSpace(token.SignedMessage) &&
+                token.DateTime != default(DateTime);
+        }
+
+        private Task OnConnectionOnClosed(Exception error)
+        {
+            _logger.LogWarning("Connection closed {error}", error?.Message ?? "by the user.");
+
+            OnDisconnected(new DisconnectEventArgs<TDto>(this, error));
+
+            return Task.CompletedTask;
+        }
+
+        private void OnDisconnected(DisconnectEventArgs<TDto> e)
+        {
+            var handler = Disconnected;
+
+            handler?.Invoke(this, e);
         }
     }
 }

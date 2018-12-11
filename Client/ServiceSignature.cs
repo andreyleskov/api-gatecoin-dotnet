@@ -45,7 +45,7 @@ namespace GatecoinServiceInterface.Client
                                    ), secret);
         }
 
-        private static string CreateToken(string message, string secret)
+        public static string CreateToken(string message, string secret)
         {
             // don't allow null secrets
             secret = secret ?? "";

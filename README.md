@@ -65,6 +65,8 @@ Events are defined by the following DTO data types:
 * TickerDto
 * MarketDepthDto
 
+For a description of each DTO and the fields they include please refer to our [Official API and Streaming documentation](https://gatecoin.com/api/).
+
 To subscribe to all events, the ```SubscribeAll``` method should be invoked.<br>
 To ***unsubscribe*** from all events the ```Dispose``` method should be invoked.
  

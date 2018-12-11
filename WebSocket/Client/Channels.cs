@@ -6,31 +6,50 @@ namespace GatecoinServiceInterface.WebSocket.Client
 {
     internal static class Channels
     {
-        public const string Trade = "trade";
-        public const string MarketDepth = "marketdepth";
-        public const string Ticker = "ticker";
-        private static readonly Dictionary<Type, string> TypeMapping;
+        public const string Trade = "public/trade";
+        public const string TradePrivate = "private/trade";
+        public const string MarketDepth = "public/marketdepth";
+        public const string Ticker = "public/ticker";
+        private static readonly Dictionary<Type, string> PublicTypeMapping;
+        private static readonly Dictionary<Type, string> PrivateTypeMapping;
 
         static Channels()
         {
-            TypeMapping = new Dictionary<Type, string>
-                          {
-                              [typeof(MarketDepthDto)] = MarketDepth,
-                              [typeof(TradeDto)] = Trade,
-                              [typeof(TickerDto)] = Ticker
-                          };
+            PublicTypeMapping = new Dictionary<Type, string>
+            {
+                [typeof(MarketDepthDto)] = MarketDepth,
+                [typeof(TradeDto)] = Trade,
+                [typeof(TickerDto)] = Ticker
+            };
+
+            PrivateTypeMapping = new Dictionary<Type, string>
+            {
+                [typeof(TradeDto)] = TradePrivate
+            };
         }
 
         public static string GetChannelHub<TDto>()
         {
             var type = typeof(TDto);
 
-            if (!TypeMapping.ContainsKey(type))
+            if (!PublicTypeMapping.ContainsKey(type))
             {
                 throw new NotSupportedException($"The model type '{type}' is not supported");
             }
 
-            return $"/v1/hub/{TypeMapping[type]}";
+            return $"/v1/hub/{PublicTypeMapping[type]}";
+        }
+
+        public static string GetPrivateChannelHub<TDto>()
+        {
+            var type = typeof(TDto);
+
+            if (!PrivateTypeMapping.ContainsKey(type))
+            {
+                throw new NotSupportedException($"The model type '{type}' is not supported");
+            }
+
+            return $"/v1/hub/{PrivateTypeMapping[type]}";
         }
     }
 }
