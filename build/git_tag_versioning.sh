@@ -1,20 +1,15 @@
-#!/bin/bash
-set -e
-
-buildConfig=Release
-if [ $# -ge 1 ]; then
-    buildConfig=$1
-fi
-
-if [ $# -ge 2 ]; then
-    buildNumber=$2
-fi
-
-packagesTempFolder=packages
-
-if [ $# -ge 3 ]; then
-    packagesTempFolder=$3
-fi
+#This script will fetch semver-compatible information from git tag
+#it should be lauched from root folder of repository
+#script expects a git tag in ..(-) format
+#stage part is optional
+#script will provide version information in form of bash variables
+#for .Net assemblies versioning (https://andrewlock.net/version-vs-versionsuffix-vs-packageversion-what-do-they-all-mean/):
+#${fileVersion}
+#${informationVersion}
+#${version}
+#if tag is found on HEAD, version will be taken as-is from it
+#if we have some commits on top of latest tag script will bump
+#the minor part from this tag by one, and, if stage is missing, add '-preview' stage
 
 
 #if we are not on commit with tag, lets put information about number of commits from latest tag
@@ -60,16 +55,22 @@ if [ "${commit_num_and_hash}" = "" ]; then
         version=${numericVersion}-${stage}
     fi
 else
-    echo "HEAD commit doesnt have a tag"
     #HEAD commit does not have tag on it
+    echo "HEAD commit doesnt have a tag"
+
+    bumpedMinor=$((${minor}+1))
+    numericVersion=${major}.${bumpedMinor}.0
+    echo "Bumping minor version from ${minor} to ${bumpedMinor}"
+
     commit_num=`echo $commit_num_and_hash | awk '{split($0,a,"-"); print a[2]}'`
     fileVersion=${numericVersion}.${commit_num}
 
     if [ "${stage}" = "" ]; then
         stage="preview"
+        echo "Auto adding preview stage to version"
     fi
 
-    informationVersion="${major}.${minor} ${stage}"
+    informationVersion="${major}.${bumpedMinor} ${stage}"
     version=${numericVersion}-${stage}${commit_num}
 fi
 
@@ -77,18 +78,4 @@ fi
 echo File version is ${fileVersion}
 echo Information version is ${informationVersion}
 echo Version is ${version}
-
-echo "Going to build in $buildConfig mode..."
-echo "Building..."
-
-dotnet restore api-gatecoin-dotnet.sln #--configfile src/.nuget/NuGet.Config
-dotnet publish api-gatecoin-dotnet.sln /p:Version=$version /p:FileVersion=$fileVersion /p:InformationVersion="${informationVersion}" --no-restore --configuration $buildConfig
-
-echo "Packing..."
-mkdir -p $packagesTempFolder
-find ./ -type f -iname "api-gatecoin-dotnet.*.nupkg$" -exec rm {} \;
-
-dotnet pack  api-gatecoin-dotnet.sln --configuration Release --verbosity Minimal /P:Version=$version
-
-find ./ -type f | grep -i api-gatecoin-dotnet.*.nupkg$ | xargs -i cp {} $packagesTempFolder
 

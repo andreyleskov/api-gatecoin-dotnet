@@ -10,7 +10,7 @@ build_and_publish_package:
       - packages
     expire_in: 6 month
   script:
-    - bash build.sh Release "$CI_JOB_ID" "packages"
-    - bash publish.sh "https://gds.myget.org/F/public/api/v2/package" "$MYGET_API_KEY_PUBLIC" "packages"
+    - bash ./build/build.sh Release "$CI_JOB_ID" "packages"
+    - bash ./build/publish.sh "https://gds.myget.org/F/public/api/v2/package" "$MYGET_API_KEY_PUBLIC" "packages"
 
 
