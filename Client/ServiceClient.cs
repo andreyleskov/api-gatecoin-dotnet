@@ -81,7 +81,7 @@ namespace GatecoinServiceInterface.Client
 
         private static double ToUnixTimeStamp(DateTime date)
         {
-            return (date.ToUniversalTime() - UnixEpoch).TotalSeconds;
+            return Math.Round((date.ToUniversalTime() - UnixEpoch).TotalSeconds);
         }
 
         public bool Login(string userName, string password, string validationCode, string captcha = null)
